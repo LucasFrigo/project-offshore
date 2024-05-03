@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg6fawtx5yjoc"]
 
-[ext_resource type="Script" path="res://Scenes/player.gd" id="1_o4mst"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_fk5fv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_71one"]
 
@@ -8,7 +8,7 @@
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_o4mst")
+script = ExtResource("1_fk5fv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_71one")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbdojrj5biuof"]
+[gd_scene load_steps=8 format=3 uid="uid://dbdojrj5biuof"]
 
-[ext_resource type="PackedScene" uid="uid://cg6fawtx5yjoc" path="res://Scenes/player.tscn" id="1_3krcu"]
+[ext_resource type="PackedScene" uid="uid://cg6fawtx5yjoc" path="res://Scenes/SC_Player.tscn" id="1_oalo4"]
+[ext_resource type="PackedScene" uid="uid://bau0x75vdgeq2" path="res://Scenes/SC_Screen.tscn" id="2_nobob"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2hkh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,60 +31,65 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ng8yv")
 
-[node name="Player" parent="." instance=ExtResource("1_3krcu")]
+[node name="Player" parent="." instance=ExtResource("1_oalo4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48884, 5.87084)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Objects" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Objects"]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_taaxv")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Objects"]
 transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 2, 0, 0, -51)
 use_collision = true
 material = SubResource("StandardMaterial3D_taaxv")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Objects"]
 transform = Transform3D(-4.37114e-06, 0, 2, 0, 10, 0, -100, 0, -8.74228e-08, -51, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_taaxv")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Objects"]
 transform = Transform3D(-4.37114e-06, 0, 2, 0, 10, 0, -100, 0, -8.74228e-08, 50, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_taaxv")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Objects"]
 transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 2, 0, 0, 52)
 use_collision = true
 material = SubResource("StandardMaterial3D_taaxv")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Objects"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 36, 8.45539, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_q1oow")
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Objects"]
 transform = Transform3D(4, 0, 0, 0, 2.7, 0, 0, 0, 20, -18, 2.45539, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_q1oow")
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Objects"]
 transform = Transform3D(3.4641, 0, 10, 0, 2.7, 0, -2, 0, 17.3205, -9, 2.45539, -12)
 use_collision = true
 material = SubResource("StandardMaterial3D_q1oow")
 
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Objects"]
 transform = Transform3D(-1.6359, 0, 1.5, 0, 1.35, 0, 0.944487, 0, 2.59808, 4, 1.45539, -1)
 use_collision = true
 material = SubResource("StandardMaterial3D_q1oow")
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Objects"]
 transform = Transform3D(-1.6359, 0, 1.5, 0, 1.35, 0, 0.944487, 0, 2.59808, 7, 1.45539, -1)
 use_collision = true
 material = SubResource("StandardMaterial3D_q1oow")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Objects"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 35.8037, 8.32266, -24.9698)
 use_collision = true
 material = SubResource("StandardMaterial3D_q1oow")
+
+[node name="SC_Screen" parent="." instance=ExtResource("2_nobob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

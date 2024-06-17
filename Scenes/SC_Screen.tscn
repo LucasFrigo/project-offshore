@@ -25,10 +25,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="Viewport/Node2D/Control"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Viewport/Node2D/Control"]
+layout_mode = 0
 offset_right = 108.0
 offset_bottom = 23.0
 text = "THIS IS A TEST"

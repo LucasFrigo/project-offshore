@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbdojrj5biuof"]
+[gd_scene load_steps=10 format=3 uid="uid://dbdojrj5biuof"]
 
-[ext_resource type="PackedScene" uid="uid://cg6fawtx5yjoc" path="res://Scenes/SC_Player.tscn" id="1_oalo4"]
+[ext_resource type="Script" path="res://Scripts/GD_TestArea.gd" id="1_vmv42"]
 [ext_resource type="PackedScene" uid="uid://bau0x75vdgeq2" path="res://Scenes/SC_Screen.tscn" id="2_nobob"]
 [ext_resource type="PackedScene" uid="uid://dc8ga3owcebxo" path="res://Models/box.blend" id="3_m7y05"]
+[ext_resource type="Script" path="res://Scripts/GD_Steam.gd" id="4_qru8n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2hkh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,6 +25,7 @@ albedo_color = Color(0.308232, 0.260933, 0.215952, 1)
 albedo_color = Color(0.47788, 0.47788, 0.47788, 1)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_vmv42")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -31,9 +33,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ng8yv")
-
-[node name="Player" parent="." instance=ExtResource("1_oalo4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48884, 5.87084)
 
 [node name="Objects" type="Node" parent="."]
 
@@ -97,3 +96,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="box" parent="." instance=ExtResource("3_m7y05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8133, 0.5, 12.4073)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+offset_right = 209.0
+offset_bottom = 112.0
+text = "HOST GAME"
+
+[node name="Refresh" type="Button" parent="CanvasLayer"]
+offset_top = 150.0
+offset_right = 209.0
+offset_bottom = 262.0
+text = "Refresh"
+
+[node name="LobbyContainer" type="ScrollContainer" parent="CanvasLayer"]
+offset_left = 371.0
+offset_top = 39.0
+offset_right = 916.0
+offset_bottom = 448.0
+
+[node name="Lobbies" type="VBoxContainer" parent="CanvasLayer/LobbyContainer"]
+layout_mode = 2
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+
+[node name="Steam" type="Node" parent="."]
+script = ExtResource("4_qru8n")
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Refresh" to="." method="_on_refresh_pressed"]

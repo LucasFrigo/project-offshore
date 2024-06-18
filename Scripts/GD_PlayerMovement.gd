@@ -25,7 +25,9 @@ var gravity = 9.8
 
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#camera.enabled = is_multiplayer_authority()
+	pass
 
 
 func _unhandled_input(event):
@@ -36,6 +38,9 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	if !is_multiplayer_authority():
+		return
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

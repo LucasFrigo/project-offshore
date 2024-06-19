@@ -21,6 +21,7 @@ func _on_host_pressed():
 	multiplayer_spawner.spawn("res://Scenes/SC_ExtMPTest.tscn")
 	$CanvasLayer/Host.hide()
 	$CanvasLayer/LobbyContainer/Lobbies.hide()
+	$CanvasLayer/Refresh.hide()
 
 func join_lobby(id):
 	peer.connect_lobby(id)

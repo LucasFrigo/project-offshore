@@ -35,16 +35,20 @@ func join_lobby(id):
 func _on_lobby_created(connect, id):
 	if connect:
 		lobby_id = id
-		Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName()+"'s Lobby"))
+		#Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName()+"'s Lobby"))
+		Steam.setLobbyData(lobby_id, "name", "AAA_LOBBY_TEST")
 		Steam.setLobbyJoinable(lobby_id, true)
 
 func open_lobby_list():
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
+	#For debugging only
+	Steam.addRequestLobbyListStringFilter("name", "AAA_LOBBY_TEST", Steam.LOBBY_COMPARISON_EQUAL)
 	Steam.requestLobbyList()
 	
 
 func _on_lobby_match_list(lobbies):
 	for lobby in lobbies:
+		
 		var lobby_name = Steam.getLobbyData(lobby, "name")
 		var member_count = Steam.getNumLobbyMembers(lobby)
 		
@@ -52,9 +56,8 @@ func _on_lobby_match_list(lobbies):
 		bt_join_lobby.set_text(str(lobby_name, "| Player Count: ", member_count))
 		bt_join_lobby.set_size(Vector2(100, 5))
 		bt_join_lobby.connect("pressed", Callable(self, "join_lobby").bind(lobby))
-		
 		$CanvasLayer/LobbyContainer/Lobbies.add_child(bt_join_lobby)
-		
+
 
 func _on_refresh_pressed():
 	if $CanvasLayer/LobbyContainer/Lobbies.get_child_count() > 0:

@@ -26,8 +26,9 @@ var gravity = 9.8
 
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#camera.enabled = is_multiplayer_authority()
-	pass
+	if is_multiplayer_authority():
+		camera.make_current()
+	#pass
 
 
 func _unhandled_input(event):
